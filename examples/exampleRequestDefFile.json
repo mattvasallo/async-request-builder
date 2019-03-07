@@ -1,0 +1,67 @@
+{
+    "getAggregatorData": {
+        "asyncModule": "aggregator",
+        "operationDetails": {
+            "operationIds": [
+                "getHTTPCourseData",
+                "getHTTPUserData"
+            ]
+        }
+    },
+    "getAggregatorDataMock": {
+        "asyncModule": "aggregator",
+        "operationDetails": {
+            "operationIds": [
+                "getHTTPCourseDataMock"
+            ]
+        }
+    },
+    "getHTTPCourseData": {
+        "asyncModule": "http",
+        "operationDetails": {
+            "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
+            "method": "GET"
+        }
+    },
+    "getHTTPUserData": {
+        "asyncModule": "http",
+        "operationDetails": {
+            "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/user/short/me",
+            "method": "GET"
+        }
+    },
+    "getHTTPCourseDataMock": {
+        "asyncModule": "http",
+        "operationDetails": {
+            "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
+            "method": "GET"
+        },
+        "mockResponse": {
+            "startDate": 1420693200000,
+            "endDate": 1493697599000,
+            "isMaster": true,
+            "courseKey": "MTPNQ7PPP27M",
+            "timezone": "America/New_York",
+            "timezoneCd": "EDT",
+            "snapshotId": 4,
+            "isbn": "9781133354215",
+            "numStudents": 1,
+            "scoreAverage": 80
+        }
+    },
+    "getFileData": {
+        "asyncModule": "file",
+        "operationDetails": {
+            "location": "foo.txt",
+            "encoding": "UTF-8"
+        }
+    },
+    "getFileDataMock": {
+        "asyncModule": "file",
+        "operationDetails": {
+            "location": "foo.txt",
+            "encoding": "UTF-8"
+        },
+        "mockResponse": "Mocked file contents"
+    }
+}

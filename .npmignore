@@ -1,0 +1,14 @@
+# Ignore OS related files
+.DS_Store
+git.properties
+
+# intellij/webstorm files
+*.iml
+.idea/
+*.html
+
+# nodejs and grunt files
+node_modules/
+
+# build generated files
+npm-debug.log
