@@ -1,0 +1,37 @@
+{
+    "name": "async-request-builder",
+    "version": "0.0.1",
+    "description": "async-request-agent converts JSON specified async requests into methods that return promises",
+    "license": "MIT",
+    "author": "Matt Vasallo <vasallom@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mattvasallo/async-request-builder"
+    },
+    "engines": {
+        "node": ">=6.5"
+    },
+    "scripts": {
+        "beautify": "find . -name \"*.js\" -or -name \"*.json\" -or -name \"*.html\" | grep -v -e node_modules -e dist | xargs js-beautify --replace --config build/config/.jsbeautifyrc || exit 1",
+        "build": "npm run clean && npm run preProcess && npm run webpack || exit 1",
+        "clean": "rm -rf dist || exit 1",
+        "lint": "jshint --config build/config/.jshintrc build lib examples || exit 1",
+        "preProcess": "npm run beautify && npm run lint || exit 1",
+        "coverage": "node node_modules/.bin/jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+        "test": "npm run build && jest && npm run coverage",
+        "webpack": "webpack --config build/config/webpackConfig.js || exit 1"
+    },
+    "devDependencies": {
+        "babel-core": "^6.24.1",
+        "babel-loader": "^7.0.0",
+        "babel-preset-es2015": "^6.24.1",
+        "coveralls": "^3.0.2",
+        "jest": "^23.6.0",
+        "js-beautify": "^1.7.4",
+        "jshint": "^2.9.5",
+        "webpack": "^4.26.0",
+        "webpack-cli": "^3.1.2"
+    },
+    "dependencies": {
+    }
+}
