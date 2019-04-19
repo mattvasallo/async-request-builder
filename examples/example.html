@@ -3,41 +3,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
     <script type="application/javascript" src="../dist/async-request-builder.js"></script>
     <script>
         var exampleRequestDefinitionJSON = {
-            "getXHRCourseData": {
-                "asyncModule": "xhr",
-                "operationDetails": {
-                    "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
-                    "method": "GET"
-                }
-            },
-            "getXHRCourseDataMock": {
-                "asyncModule": "xhr",
-                "operationDetails": {
-                    "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
-                    "method": "GET"
+            "course": {
+                "getMetadata": {
+                    "asyncModule": "xhr",
+                    "operationDetails": {
+                        "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
+                        "method": "GET"
+                    }
                 },
-                "mockResponse": {
-                    "startDate": 1420693200000,
-                    "endDate": 1493697599000,
-                    "isMaster": false,
-                    "courseKey": "MTPNQ7PPP27M",
-                    "timezone": "America/New_York",
-                    "timezoneCd": "EDT",
-                    "snapshotId": 4,
-                    "isbn": "9781133354215",
-                    "numStudents": 1,
-                    "scoreAverage": 80
+                "getMetadataMock": {
+                    "asyncModule": "xhr",
+                    "operationDetails": {
+                        "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
+                        "method": "GET"
+                    },
+                    "mockResponse": {
+                        "startDate": 1420693200000,
+                        "endDate": 1493697599000,
+                        "isMaster": false,
+                        "courseKey": "MTPNQ7PPP27M",
+                        "timezone": "America/New_York",
+                        "timezoneCd": "EDT",
+                        "snapshotId": 4,
+                        "isbn": "9781133354215",
+                        "numStudents": 1,
+                        "scoreAverage": 80
+                    }
                 }
             }
         };
 
         var asyncRequestLayer = createAsyncRequestBuilder(exampleRequestDefinitionJSON, {});
 
-        asyncRequestLayer.getXHRCourseData({
+        asyncRequestLayer.course.getMetadata({
             params: {
                 snapshotId: 4
             }
@@ -45,7 +46,7 @@
             console.log('got real xhr response -> ', response);
         });
 
-        asyncRequestLayer.getXHRCourseDataMock({
+        asyncRequestLayer.course.getMetadataMock({
             params: {
                 snapshotId: 4
             }

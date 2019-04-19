@@ -1,4 +1,4 @@
-# async-request-builder [![Build Status](https://travis-ci.com/mattvasallo/async-request-builder.svg?branch=master)](https://travis-ci.com/mattvasallo/async-request-builder) [![Coverage Status](https://coveralls.io/repos/github/mattvasallo/async-request-builder/badge.svg)](https://coveralls.io/github/mattvasallo/async-request-builder)
+# async-request-builder [![Build Status](https://travis-ci.com/mattvasallo/async-request-builder.svg?branch=master)](https://travis-ci.com/mattvasallo/async-request-builder) [![Coverage Status](https://coveralls.io/repos/github/mattvasallo/async-request-builder/badge.svg?branch=master)](https://coveralls.io/github/mattvasallo/async-request-builder?branch=master)
 
 AsyncRequestBuilder is a small library that simplifies async requests made in JS. Define all asynchronous requests in JSON format and use async-request-builder to convert that JSON definition file into methods that return promises.  Built to support browser based XHR's and a number of NodeJS async requests like http, mysql, mongo and file reads. Improves code readability, promotes separation of concern and provides built in mocking for test purposes.
 

@@ -52,7 +52,10 @@
     "nonstandard": true,
 
     "globals": {
+        "global": false,
         "jasmine": false,
+        "jest": false,
+        "test": false,
         "exports": false,
         "by": false,
         "element": false,
