@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Lightweight library to specify http requests using JSON and autogenerate promise based methods to execute the requests.",
     "license": "MIT",
-    "author": "Matt Vasallo <vasallom@gmail.com>",
+    "author": "Matt Vasallo <mattvnpm@gmail.com>",
     "repository": {
         "type": "git",
         "url": "https://github.com/mattvasallo/async-request-builder"
@@ -21,7 +21,7 @@
         "coverage": "node node_modules/.bin/jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "test": "npm run build && jest && npm run coverage",
         "webpack": "webpack --config build/config/webpackConfig.js || exit 1",
-        "transpile": "babel lib -d dist --copy-files --ignore **__**__ "
+        "transpile": "babel lib -d dist --copy-files --ignore __mocks__,__tests__"
     },
     "devDependencies": {
         "@babel/plugin-proposal-object-rest-spread": "^7.4.3",

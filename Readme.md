@@ -7,9 +7,9 @@ e.g. The following XHR JSON contract:
 ```json
 {
   "getXHRData": {
-    "asyncModule": "xhr",
+    "asyncModule": "http",
     "operationDetails": {
-      "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
+      "url": "https://httpstat.us/200?sleep=:sleep",
       "method": "GET"
     }
   }
@@ -21,7 +21,7 @@ is translated into an object with a getXHRData method that returns a promise.  I
 The call would look like:
 
 ```js
-asyncLayer.getXHRData({params:{snapshotId: 4}}).then(data => {
+asyncLayer.getXHRData({params:{sleep: 1000}}).then(data => {
     console.log('got xhr data -> ',data );
 });
 ```
@@ -48,12 +48,19 @@ npm run build
 Browser:
 &nbsp; Open example.html and watch console output
 
+Node:
+&nbsp; Run example.js and watch console output
+
 
 ### Using This Library
 
 Coming soon....
+- Support for mysql and mongodb
+- Support for swagger based JSON
+- Support for build time output
 
 ### Todos
-- 90% code coverage
-- http PUT, POST, & DELETE  
+- Add mysql, aggregation, & fs
 - async-modules format validation
+- caching async responses
+- Add typescript
