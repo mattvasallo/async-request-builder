@@ -3,61 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <script type="application/javascript" src="../dist/async-request-builder.js"></script>
+    <title>Example XHR</title>
+    <script type="application/javascript" src="../dist/async-request-builder-umd.js"></script>
     <script>
-        var exampleRequestDefinitionJSON = {
-            "course": {
-                "getMetadata": {
-                    "asyncModule": "xhr",
-                    "operationDetails": {
-                        "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
-                        "method": "GET"
-                    }
-                },
-                "getMetadataMock": {
-                    "asyncModule": "xhr",
-                    "operationDetails": {
-                        "url": "https://private-857c47-classicmtgradebookservices.apiary-mock.com/progressapp/service/courseInfo/:snapshotId",
-                        "method": "GET"
-                    },
-                    "mockResponse": {
-                        "startDate": 1420693200000,
-                        "endDate": 1493697599000,
-                        "isMaster": false,
-                        "courseKey": "MTPNQ7PPP27M",
-                        "timezone": "America/New_York",
-                        "timezoneCd": "EDT",
-                        "snapshotId": 4,
-                        "isbn": "9781133354215",
-                        "numStudents": 1,
-                        "scoreAverage": 80
+        const exampleRequestDefinitionJSON = {
+            "browserHTTPGet": {
+                "asyncModule": "xhr",
+                "operationDetails": {
+                    "method": "GET",
+                    "url": "https://httpstat.us/200?sleep=:sleep",
+                    "headers": {
+                        "Accept": 'application/json'
                     }
                 }
             }
         };
 
-        var asyncRequestLayer = createAsyncRequestBuilder(exampleRequestDefinitionJSON, {});
+        const asyncRequestLayer = createAsyncRequestBuilder(exampleRequestDefinitionJSON);
 
-        asyncRequestLayer.course.getMetadata({
+        asyncRequestLayer.browserHTTPGet({
             params: {
-                snapshotId: 4
+                sleep: 1000
             }
         }).then(response => {
-            console.log('got real xhr response -> ', response);
-        });
-
-        asyncRequestLayer.course.getMetadataMock({
-            params: {
-                snapshotId: 4
-            }
-        }).then(response => {
-            console.log('got mock xhr response -> ', response);
+            console.log('Made http request with sleep param at 1000- > ', response);
+            document.getElementById("test").innerHTML = "Made http request with sleep param at 1000- > " + JSON.stringify(response);
         });
     </script>
 </head>
 
 <body>
-
+    <div id="test">Making async http request with 1 second sleep...</div>
 </body>
 
 </html>

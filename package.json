@@ -1,7 +1,7 @@
 {
     "name": "async-request-builder",
-    "version": "0.0.1",
-    "description": "async-request-agent converts JSON specified async requests into methods that return promises",
+    "version": "1.0.0",
+    "description": "Lightweight library to specify http requests using JSON and autogenerate promise based methods to execute the requests.",
     "license": "MIT",
     "author": "Matt Vasallo <vasallom@gmail.com>",
     "repository": {
@@ -11,19 +11,26 @@
     "engines": {
         "node": ">=6.5"
     },
+    "browser": "dist/async-request-builder.js",
     "scripts": {
         "beautify": "find . -name \"*.js\" -or -name \"*.json\" -or -name \"*.html\" | grep -v -e node_modules -e dist | xargs js-beautify --replace --config build/config/.jsbeautifyrc || exit 1",
-        "build": "npm run clean && npm run preProcess && npm run webpack || exit 1",
+        "build": "npm run clean && npm run preProcess && npm run webpack && npm run transpile || exit 1",
         "clean": "rm -rf dist || exit 1",
         "lint": "jshint --config build/config/.jshintrc build lib examples || exit 1",
         "preProcess": "npm run beautify && npm run lint || exit 1",
         "coverage": "node node_modules/.bin/jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "test": "npm run build && jest && npm run coverage",
-        "webpack": "webpack --config build/config/webpackConfig.js || exit 1"
+        "webpack": "webpack --config build/config/webpackConfig.js || exit 1",
+        "transpile": "babel lib -d dist --copy-files --ignore **__**__ "
     },
     "devDependencies": {
-        "babel-core": "^6.24.1",
+        "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
+        "@babel/preset-env": "^7.4.3",
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
         "babel-loader": "^7.0.0",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
         "babel-preset-es2015": "^6.24.1",
         "coveralls": "^3.0.2",
         "jest": "^23.6.0",
@@ -32,5 +39,7 @@
         "webpack": "^4.26.0",
         "webpack-cli": "^3.1.2"
     },
-    "dependencies": {}
+    "dependencies": {
+        "cross-fetch": "^3.0.2"
+    }
 }

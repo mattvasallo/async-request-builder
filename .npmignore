@@ -1,14 +1,26 @@
 # Ignore OS related files
 .DS_Store
 git.properties
+.gitignore
+.npmignore
 
-# intellij/webstorm files
+# IDE files
+.vscode/
 *.iml
 .idea/
-*.html
+
+#Configuration
+build/
 
 # nodejs and grunt files
 node_modules/
 
+# test files
+**/__tests__/**
+**/__mocks__/**
+
 # build generated files
+coverage/
 npm-debug.log
+package-lock.json
+.travis.yml

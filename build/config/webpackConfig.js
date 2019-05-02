@@ -5,10 +5,10 @@ var webpack = require('webpack');
 module.exports = () => {
     return {
         entry: './index',
-        mode: 'production',
+        mode: 'none',
         devtool: 'source-map',
         output: {
-            filename: './async-request-builder.js',
+            filename: './async-request-builder-umd.js',
             libraryTarget: 'umd'
         },
         module: {
