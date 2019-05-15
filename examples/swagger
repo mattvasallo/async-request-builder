@@ -1,0 +1,4844 @@
+mobile swagger
+{
+  "swagger": "2.0",
+  "info": {},
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "activities"
+    },
+    {
+      "name": "analytics"
+    },
+    {
+      "name": "AppInfo"
+    },
+    {
+      "name": "attendance"
+    },
+    {
+      "name": "authentication"
+    },
+    {
+      "name": "books"
+    },
+    {
+      "name": "courses"
+    },
+    {
+      "name": "dashboard"
+    },
+    {
+      "name": "devices"
+    },
+    {
+      "name": "entitlements"
+    },
+    {
+      "name": "flashcards"
+    },
+    {
+      "name": "gradebook"
+    },
+    {
+      "name": "licenses"
+    },
+    {
+      "name": "notifications"
+    },
+    {
+      "name": "poll"
+    },
+    {
+      "name": "preferences"
+    }
+  ],
+  "paths": {
+    "/activities/{courseKey}/{activityId}": {
+      "get": {
+        "tags": [
+          "activities"
+        ],
+        "summary": "Get activity for the courseKey and activity id.",
+        "description": "",
+        "operationId": "getActivity",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "activityId",
+            "in": "path",
+            "description": "Activity id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayActivity"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/activities/{courseKey}": {
+      "get": {
+        "tags": [
+          "activities"
+        ],
+        "summary": "Get activities for the courseKey.",
+        "description": "",
+        "operationId": "getActivities",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GetGatewayActivitiesResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/activities/{courseKey}/learningPath": {
+      "get": {
+        "tags": [
+          "activities"
+        ],
+        "summary": "Get learning path for courseKey for a user.",
+        "description": "",
+        "operationId": "getLearningPath",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayLearningPathResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/activities/launchData/{courseKey}/{activityId}": {
+      "get": {
+        "tags": [
+          "activities"
+        ],
+        "summary": "Retrieve parameters needed to launch an activity.",
+        "description": "",
+        "operationId": "getActivityLaunchData",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "activityId",
+            "in": "path",
+            "description": "Activity ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayActivityLaunchData"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/analytics/engagements/{courseKey}": {
+      "get": {
+        "tags": [
+          "analytics"
+        ],
+        "summary": "Engagement Course Report",
+        "description": "Instructor only",
+        "operationId": "getInstructorReport",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayEngagementCourseReport"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/analytics/engagements/{courseKey}/{studentGuid}": {
+      "get": {
+        "tags": [
+          "analytics"
+        ],
+        "summary": "Engagement Student Details",
+        "description": "Instructor only",
+        "operationId": "getStudentReport",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "studentGuid",
+            "in": "path",
+            "description": "Guid of student",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayEngagementStudentDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/features": {
+      "get": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Get all feature's names",
+        "description": "",
+        "operationId": "getAllFeatures",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayFeaturesResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/features/{feature}/courses/{courseKey}/enable": {
+      "post": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Enable feature for course. (IMPORTANT) If course if enabled/disabled then other rules are ignored",
+        "description": "",
+        "operationId": "enableFeatureForCourse",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "feature",
+            "in": "path",
+            "description": "Feature name of the app",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key name of the app",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayFeatureCourse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/features/{feature}": {
+      "get": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Get feature",
+        "description": "",
+        "operationId": "getFeature",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "feature",
+            "in": "path",
+            "description": "Feature name of the app",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayFeature"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Create new feature",
+        "description": "",
+        "operationId": "createFeature",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "feature",
+            "in": "path",
+            "description": "Feature name of the app",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayFeature"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Delete feature information",
+        "description": "",
+        "operationId": "deleteFeature",
+        "parameters": [
+          {
+            "name": "feature",
+            "in": "path",
+            "description": "Feature name of the app",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/features/{feature}/enable": {
+      "post": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Enable feature",
+        "description": "",
+        "operationId": "enableFeature",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "feature",
+            "in": "path",
+            "description": "Feature name of the app",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayFeature"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/features/{feature}/disable": {
+      "post": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Disable feature",
+        "description": "",
+        "operationId": "disableFeature",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "feature",
+            "in": "path",
+            "description": "Feature name of the app",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayFeature"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/features/{feature}/courses/{courseKey}/disable": {
+      "post": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Disable feature for course. (IMPORTANT) If course if enabled/disabled then other rules are ignored",
+        "description": "",
+        "operationId": "disableFeatureForCourse",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "feature",
+            "in": "path",
+            "description": "Feature name of the app",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key name of the app",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayFeatureCourse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/os/os/{os}": {
+      "get": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Get operating system info",
+        "description": "",
+        "operationId": "getOperatingSystem",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "os",
+            "in": "path",
+            "description": "Operating system",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayOperatingSystem"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Save or update operating system info",
+        "description": "",
+        "operationId": "setSupportedVersions",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "os",
+            "in": "path",
+            "description": "Operating system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayOperatingSystemRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayOperatingSystem"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Delete operating system info",
+        "description": "",
+        "operationId": "deleteOperatingSystem",
+        "parameters": [
+          {
+            "name": "os",
+            "in": "path",
+            "description": "Operating system",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/os/os/{os}/checkUpgrade": {
+      "post": {
+        "tags": [
+          "AppInfo"
+        ],
+        "summary": "Check upgrade information",
+        "description": "",
+        "operationId": "checkUpgrade",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "os",
+            "in": "path",
+            "description": "Operating system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayCheckAppUpgradeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayUpgradeCheckerResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/instructor/attendances/attendance": {
+      "post": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Create new attendance",
+        "description": "Instructor only",
+        "operationId": "createAttendance",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayCreateAttendanceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayAttendance"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/instructor/attendances/{attendanceId}": {
+      "get": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Get attendance result for courseKey and for a specific attendance",
+        "description": "Instructor only",
+        "operationId": "getAttendanceResult",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "attendanceId",
+            "in": "path",
+            "description": "Attendance Id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayAttendanceResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Delete specific attendance",
+        "description": "",
+        "operationId": "deleteAttendance",
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "attendanceId",
+            "in": "path",
+            "description": "Attendance Id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/student/attendances": {
+      "get": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Get student attendance result for courseKey by student",
+        "description": "Student only",
+        "operationId": "getStudentAttendanceResult",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayStudentAttendanceResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/instructor/attendances/students/{studentGuid}/bulk": {
+      "post": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Bulk update attendances for student",
+        "description": "Instructor only",
+        "operationId": "bulkUpdateStudentForAttendances",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "studentGuid",
+            "in": "path",
+            "description": "Attendance Id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayBulkUpdateAttendanceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/instructor/attendances": {
+      "get": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Get attendances report for course",
+        "description": "Instructor only",
+        "operationId": "getCourseAttendancesReport",
+        "produces": [
+          "text/csv"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dateBefore",
+            "in": "query",
+            "description": "Top limit for attendance date creation",
+            "required": false,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "dateAfter",
+            "in": "query",
+            "description": "Bottom limit for attendance date creation",
+            "required": false,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayStudentAttendanceResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/instructor/attendances/students/{studentGuid}": {
+      "get": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Get student attendance result for courseKey and for a specific student by instructor",
+        "description": "Instructor only",
+        "operationId": "getStudentAttendanceForInstructorResult",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "studentGuid",
+            "in": "path",
+            "description": "Student guid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayStudentAttendanceForInstructorResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/student/attendances/{attendanceId}/mark/present": {
+      "post": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Mark student as present",
+        "description": "Student only",
+        "operationId": "checkIn",
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "attendanceId",
+            "in": "path",
+            "description": "Attendance Id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/instructor/attendances/{attendanceId}/bulk": {
+      "post": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Bulk update students participation for attendance",
+        "description": "Instructor only",
+        "operationId": "bulkUpdateAttendanceForStudents",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "attendanceId",
+            "in": "path",
+            "description": "Attendance Id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayBulkUpdateStudentParticipationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/instructor/attendances/{attendanceId}/end": {
+      "post": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "End specific attendance",
+        "description": "",
+        "operationId": "endAttendance",
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "attendanceId",
+            "in": "path",
+            "description": "Attendance Id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/instructor/summary": {
+      "get": {
+        "tags": [
+          "attendance"
+        ],
+        "summary": "Get summary of attendances for courseKey",
+        "description": "Instructor only",
+        "operationId": "getCourseSummary",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayCourseSummary"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/resetPassword/{username}": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Generate a password reset email",
+        "description": "",
+        "operationId": "resetPassword",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "username",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The password reset email is generated successfully."
+          },
+          "404": {
+            "description": "Username is not found."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/authenticate/courses/{courseKey}": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Receive a token for the course",
+        "description": "This is intended only for gateway courses",
+        "operationId": "authenticateCourse",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayAuthenticateResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/authenticate": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Exchanges the username/password for a token",
+        "description": "",
+        "operationId": "authenticate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayAuthenticateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayAuthenticateResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/voices/locations": {
+      "get": {
+        "tags": [
+          "books"
+        ],
+        "summary": "Get all voice locations",
+        "description": "",
+        "operationId": "getVoiceLocations",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayVoiceLocations"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/books/covers/{isbn}": {
+      "get": {
+        "tags": [
+          "books"
+        ],
+        "summary": "Get Cover by ISBN",
+        "description": "",
+        "operationId": "getCover",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "description": "ISBN of book",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Size of cover. STANDARD is default.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "STANDARD",
+              "LARGE"
+            ]
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/books/{isbn}/location": {
+      "get": {
+        "tags": [
+          "books"
+        ],
+        "summary": "Get book location for the requested token",
+        "description": "",
+        "operationId": "getBook",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "description": "ISBN of the book",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayBookLocation"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/roster": {
+      "get": {
+        "tags": [
+          "courses"
+        ],
+        "summary": "Get course roster",
+        "description": "Instructor only",
+        "operationId": "getRoster",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayRoster"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "tags": [
+          "dashboard"
+        ],
+        "summary": "Get user dashboard",
+        "description": "",
+        "operationId": "getDashboard",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayDashboard"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/devices/register": {
+      "post": {
+        "tags": [
+          "devices"
+        ],
+        "summary": "Register user device",
+        "description": "",
+        "operationId": "registerUserDevice",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayRegisterUserDeviceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayUserDevice"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/entitlements": {
+      "get": {
+        "tags": [
+          "entitlements"
+        ],
+        "summary": "Get entitlements",
+        "description": "",
+        "operationId": "getEntitlements",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayGetEntitlementsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/userFlashcards/{courseKey}/searches": {
+      "post": {
+        "tags": [
+          "flashcards"
+        ],
+        "summary": "Search all user flashcards.",
+        "description": "",
+        "operationId": "searchUserFlashcards",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewaySearchUserFlashcardsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayUserFlashcardsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/userFlashcards/{courseKey}": {
+      "post": {
+        "tags": [
+          "flashcards"
+        ],
+        "summary": "Create an user flashcard.",
+        "description": "",
+        "operationId": "createUserFlashcard",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayCreateUserFlashcardRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayUserFlashcard"
+            }
+          },
+          "400": {
+            "description": "When one of the required fields is Blank."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/chapters/searches": {
+      "post": {
+        "tags": [
+          "flashcards"
+        ],
+        "summary": "Search all chapters with flashcards",
+        "description": "",
+        "operationId": "searchChapters",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewaySearchChaptersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayChaptersResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/flashcards/searches": {
+      "post": {
+        "tags": [
+          "flashcards"
+        ],
+        "summary": "Search all chapters",
+        "description": "",
+        "operationId": "searchFlashcards",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewaySearchFlashcardsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayFlashcardsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/userFlashcards/{courseKey}/{userFlashcardId}": {
+      "put": {
+        "tags": [
+          "flashcards"
+        ],
+        "summary": "Update the user flashcard.",
+        "description": "",
+        "operationId": "updateUserFlashcard",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userFlashcardId",
+            "in": "path",
+            "description": "ID of user flashcard",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayUpdateUserFlashcardRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayUserFlashcard"
+            }
+          },
+          "400": {
+            "description": "When one of the required fields is Blank."
+          },
+          "404": {
+            "description": "When ID is not found or User doesn't have a rights for updating."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "flashcards"
+        ],
+        "summary": "Delete the user flashcard.",
+        "description": "",
+        "operationId": "deleteUserFlashcard",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "description": "Course key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userFlashcardId",
+            "in": "path",
+            "description": "ID of user flashcard",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The deletion is done successfully."
+          },
+          "404": {
+            "description": "When ID is not found or User doesn't have a rights for deletion."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/gradebook/{courseKey}/records": {
+      "get": {
+        "tags": [
+          "gradebook"
+        ],
+        "summary": "Get Gradebook student`s records",
+        "description": "Instructor only",
+        "operationId": "getCourseRecords",
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayCourseRecordsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/gradebook/{courseKey}/course": {
+      "get": {
+        "tags": [
+          "gradebook"
+        ],
+        "summary": "Get Gradebook Course report",
+        "description": "Instructor only",
+        "operationId": "getCourseReport",
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayCourseReport"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/gradebook/{courseKey}/students/{studentGuid}": {
+      "get": {
+        "tags": [
+          "gradebook"
+        ],
+        "summary": "Get Gradebook Student report",
+        "description": "Instructor only",
+        "operationId": "getStudentReport_1",
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "studentGuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayStudentReport"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/gradebook/{courseKey}/student": {
+      "get": {
+        "tags": [
+          "gradebook"
+        ],
+        "summary": "Get Gradebook Student report",
+        "description": "",
+        "operationId": "getStudentReport_2",
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayStudentReport"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/licenses/acceptances": {
+      "get": {
+        "tags": [
+          "licenses"
+        ],
+        "summary": "Gets license acceptances information.",
+        "description": "",
+        "operationId": "getLicenseAcceptances",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GetGatewayLicenseAcceptancesResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "licenses"
+        ],
+        "summary": "Store license acceptance information",
+        "description": "",
+        "operationId": "saveNewLicenseAcceptance",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/NewLicenseAcceptanceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayLicenseAcceptance"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/notifications": {
+      "get": {
+        "tags": [
+          "notifications"
+        ],
+        "summary": "Search notifications.",
+        "description": "",
+        "operationId": "searchNotifications",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayNotificationsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/notifications/{id}/read": {
+      "post": {
+        "tags": [
+          "notifications"
+        ],
+        "summary": "Mark notification as read",
+        "description": "",
+        "operationId": "updateAsRead",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Notification Id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/notifications/{id}": {
+      "delete": {
+        "tags": [
+          "notifications"
+        ],
+        "summary": "Delete notification",
+        "description": "",
+        "operationId": "deleteNotification",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Notification Id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/polls/{pollId}": {
+      "get": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Get poll by id",
+        "description": "",
+        "operationId": "getPoll",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pollId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayPoll"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Delete one poll",
+        "description": "",
+        "operationId": "deletePoll",
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pollId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/polls": {
+      "get": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Fetch all the polls for course",
+        "description": "",
+        "operationId": "getPolls",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GetGatewayPollsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Create new poll",
+        "description": "",
+        "operationId": "createPoll",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayCreatePollRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayPoll"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/polls/{pollId}/outcomes/student": {
+      "get": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Fetch poll results for one poll",
+        "description": "",
+        "operationId": "getPollOutcomeForStudent",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pollId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayPollOutcome"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/templates/{templateId}": {
+      "get": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Retrieve a template",
+        "description": "",
+        "operationId": "getTemplate",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayTemplate"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Change a template.",
+        "description": "",
+        "operationId": "updateTemplate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayCreateTemplateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayTemplate"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Delete a template.",
+        "description": "",
+        "operationId": "deleteTemplate",
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/templates": {
+      "get": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Retrieve all the templates for guid.",
+        "description": "",
+        "operationId": "getTemplates",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GetGatewayTemplatesResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Create new template",
+        "description": "",
+        "operationId": "createTemplate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayCreateTemplateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayTemplate"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/polls/{pollId}/end": {
+      "post": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "End a poll",
+        "description": "",
+        "operationId": "endPoll",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pollId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/polls/{pollId}/outcomes/instructor": {
+      "get": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Fetch all polls results for poll id",
+        "description": "",
+        "operationId": "getPollOutcomeInstructor",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pollId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayPollOutcome"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/polls/outcome": {
+      "get": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Fetch all polls results for course",
+        "description": "",
+        "operationId": "getPollsOutcomesForCourse",
+        "produces": [
+          "application/json",
+          "text/csv"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dateBefore",
+            "in": "query",
+            "description": "Top limit for poll date creation",
+            "required": false,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "dateAfter",
+            "in": "query",
+            "description": "Bottom limit for poll date creation",
+            "required": false,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GetGatewayPollOutcomesResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/courses/{courseKey}/polls/{pollId}/submit": {
+      "post": {
+        "tags": [
+          "poll"
+        ],
+        "summary": "Submit answers to one poll you are authorized to see. Currently you are only allowed to submit once per poll.",
+        "description": "",
+        "operationId": "userSubmitPoll",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "courseKey",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pollId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewaySubmitPollRequest"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/preferences": {
+      "get": {
+        "tags": [
+          "preferences"
+        ],
+        "summary": "Get preferences",
+        "description": "",
+        "operationId": "getPreferences",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayPreferences"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "preferences"
+        ],
+        "summary": "Store preferences",
+        "description": "",
+        "operationId": "storePreferences",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GatewayStorePreferencesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GatewayPreferences"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "GatewayActivity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "courseKey": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "OTHER",
+            "READING",
+            "ASSESSMENT",
+            "HOMEWORK",
+            "GOOGLE_DOCS",
+            "MEDIA",
+            "FLASH_CARDS",
+            "KALTURA",
+            "RSS_FEED",
+            "WEB_LINKS",
+            "STUDY_GUIDE",
+            "CONCEPT_MAP",
+            "NON_MINDTAP",
+            "EXTERNAL_READING",
+            "FILE_DOWNLOAD",
+            "UNSUPPORTED"
+          ]
+        },
+        "displayLabel": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "pronounce": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "availableDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "dueDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "extensionDueDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "grading": {
+          "$ref": "#/definitions/GatewayGrading"
+        },
+        "isTimed": {
+          "type": "boolean"
+        },
+        "duration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "contexts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "media": {
+          "$ref": "#/definitions/GatewayMedia"
+        },
+        "lateSubmissionDueDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "latePenaltyValue": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "GatewayGrading": {
+      "type": "object",
+      "properties": {
+        "countsTowardsGrade": {
+          "type": "boolean"
+        },
+        "manuallyGraded": {
+          "type": "boolean"
+        },
+        "autosubmitted": {
+          "type": "boolean"
+        },
+        "pointsPossible": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_STARTED",
+            "IN_PROGRESS",
+            "PENDING",
+            "COMPLETED",
+            "UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    "GatewayMedia": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "AUDIO",
+            "AUDIO_INLINE",
+            "HTML",
+            "IMAGE",
+            "VIDEO",
+            "UNSUPPORTED"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/GatewayMediaContent"
+        },
+        "poster": {
+          "$ref": "#/definitions/GatewayMediaContent"
+        }
+      }
+    },
+    "GatewayMediaContent": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "secured": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GetGatewayActivitiesResponse": {
+      "type": "object",
+      "properties": {
+        "activities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayActivity"
+          }
+        }
+      }
+    },
+    "GatewayLearningPathNode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "parentId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "BOOK",
+            "PATH",
+            "UNIT",
+            "ACTIVITY",
+            "FOLDER"
+          ]
+        },
+        "startDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "endDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayLearningPathNode"
+          }
+        }
+      }
+    },
+    "GatewayLearningPathResponse": {
+      "type": "object",
+      "properties": {
+        "learningPath": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayLearningPathNode"
+          }
+        }
+      }
+    },
+    "GatewayActivityLaunchData": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "GatewayEngagementCourseReport": {
+      "type": "object",
+      "properties": {
+        "averageScore": {
+          "type": "number",
+          "format": "double"
+        },
+        "averageActivitiesVisited": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "averageHoursVisited": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "averageLogins": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "highPerformersSummary": {
+          "$ref": "#/definitions/GatewayEngagementHighPerformersSummary"
+        },
+        "studentDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayEngagementStudentDetails"
+          }
+        }
+      }
+    },
+    "GatewayEngagementHighPerformersSummary": {
+      "type": "object",
+      "properties": {
+        "averageHoursVisited": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "averageLogins": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayEngagementStudentDetails": {
+      "type": "object",
+      "properties": {
+        "ssoGuid": {
+          "type": "string"
+        },
+        "activitiesVisited": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hoursVisited": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "loginCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayFeaturesResponse": {
+      "type": "object",
+      "properties": {
+        "features": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GatewayFeatureCourse": {
+      "type": "object",
+      "properties": {
+        "courseKey": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "GRANTED",
+            "DENIED"
+          ]
+        }
+      }
+    },
+    "GatewayFeature": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "courses": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/GatewayFeatureCourse"
+          }
+        },
+        "products": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/GatewayFeatureProduct"
+          }
+        }
+      }
+    },
+    "GatewayFeatureProduct": {
+      "type": "object",
+      "properties": {
+        "productType": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "GRANTED",
+            "DENIED"
+          ]
+        }
+      }
+    },
+    "GatewayOperatingSystem": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "latestVersion": {
+          "type": "string"
+        },
+        "lowestSupportedVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayOperatingSystemRequest": {
+      "type": "object",
+      "properties": {
+        "osName": {
+          "type": "string"
+        },
+        "lowestSupportedVersion": {
+          "type": "string"
+        },
+        "latestVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayUpgradeCheckerResponse": {
+      "type": "object",
+      "properties": {
+        "recommendUpgrade": {
+          "type": "boolean"
+        },
+        "forceUpgrade": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayCheckAppUpgradeRequest": {
+      "type": "object",
+      "properties": {
+        "appVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayAttendance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "publishedDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "endDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "eventLocation": {
+          "$ref": "#/definitions/GatewayEventLocation"
+        }
+      }
+    },
+    "GatewayEventLocation": {
+      "type": "object",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "lng": {
+          "type": "number",
+          "format": "double"
+        },
+        "radius": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "Duration": {
+      "type": "object",
+      "properties": {
+        "seconds": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "negative": {
+          "type": "boolean"
+        },
+        "nano": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "units": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TemporalUnit"
+          }
+        },
+        "zero": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayCreateAttendanceRequest": {
+      "type": "object",
+      "properties": {
+        "duration": {
+          "$ref": "#/definitions/Duration"
+        },
+        "eventLocation": {
+          "$ref": "#/definitions/GatewayEventLocation"
+        }
+      }
+    },
+    "TemporalUnit": {
+      "type": "object",
+      "properties": {
+        "dateBased": {
+          "type": "boolean"
+        },
+        "timeBased": {
+          "type": "boolean"
+        },
+        "duration": {
+          "$ref": "#/definitions/Duration"
+        },
+        "durationEstimated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayAttendanceResult": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "$ref": "#/definitions/GatewaySummary"
+        },
+        "students": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayStudentState"
+          }
+        }
+      }
+    },
+    "GatewayStudentState": {
+      "type": "object",
+      "properties": {
+        "student": {
+          "$ref": "#/definitions/GatewayUser"
+        },
+        "attended": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewaySummary": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "attended": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "missed": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayUser": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayAttendanceState": {
+      "type": "object",
+      "properties": {
+        "attendance": {
+          "$ref": "#/definitions/GatewayAttendance"
+        },
+        "attended": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayStudentAttendanceResult": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "$ref": "#/definitions/GatewaySummary"
+        },
+        "attendances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayAttendanceState"
+          }
+        }
+      }
+    },
+    "GatewayBulkUpdateAttendance": {
+      "type": "object",
+      "properties": {
+        "attendanceId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "attended": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayBulkUpdateAttendanceRequest": {
+      "type": "object",
+      "properties": {
+        "bulkUpdateAttendances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayBulkUpdateAttendance"
+          }
+        }
+      }
+    },
+    "GatewayAttendanceSummary": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "$ref": "#/definitions/GatewaySummary"
+        },
+        "attendance": {
+          "$ref": "#/definitions/GatewayAttendance"
+        }
+      }
+    },
+    "GatewayAttendanceSummaryResponse": {
+      "type": "object",
+      "properties": {
+        "attendanceSummaries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayAttendanceSummary"
+          }
+        }
+      }
+    },
+    "GatewayStudentAttendanceForInstructorResult": {
+      "type": "object",
+      "properties": {
+        "student": {
+          "$ref": "#/definitions/GatewayUser"
+        },
+        "studentAttendanceResult": {
+          "$ref": "#/definitions/GatewayStudentAttendanceResult"
+        }
+      }
+    },
+    "GatewayStudentAttendanceResponse": {
+      "type": "object",
+      "properties": {
+        "studentAttendances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayStudentAttendanceForInstructorResult"
+          }
+        }
+      }
+    },
+    "GatewayBulkUpdateStudentParticipation": {
+      "type": "object",
+      "properties": {
+        "studentGuid": {
+          "type": "string"
+        },
+        "attended": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayBulkUpdateStudentParticipationRequest": {
+      "type": "object",
+      "properties": {
+        "bulkUpdateStudentParticipations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayBulkUpdateStudentParticipation"
+          }
+        }
+      }
+    },
+    "GatewayCourseSummary": {
+      "type": "object",
+      "properties": {
+        "attendanceCheckTotal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "attendanceCheckPercentage": {
+          "type": "number",
+          "format": "double"
+        },
+        "attendanceCheckMissPercentage": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "GatewayAuthenticateResponse": {
+      "type": "object",
+      "properties": {
+        "currentDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayAuthenticateRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayVoiceLocation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "cognitoPoolId": {
+          "type": "string"
+        },
+        "cognitoRegionType": {
+          "type": "string"
+        },
+        "s3RegionType": {
+          "type": "string"
+        },
+        "s3BucketName": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayVoiceLocations": {
+      "type": "object",
+      "properties": {
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayVoiceLocation"
+          }
+        }
+      }
+    },
+    "GatewayBookLocation": {
+      "type": "object",
+      "properties": {
+        "cognitoRegionType": {
+          "type": "string"
+        },
+        "s3RegionType": {
+          "type": "string"
+        },
+        "cognitoPoolId": {
+          "type": "string"
+        },
+        "s3BucketName": {
+          "type": "string"
+        },
+        "ebookKey": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "GatewayRoster": {
+      "type": "object",
+      "properties": {
+        "students": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayUser"
+          }
+        }
+      }
+    },
+    "GatewayDashboard": {
+      "type": "object",
+      "properties": {
+        "courses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayDashboardCourse"
+          }
+        },
+        "numberOfUnreadNotifications": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayDashboardCourse": {
+      "type": "object",
+      "properties": {
+        "courseKey": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "activities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayActivity"
+          }
+        }
+      }
+    },
+    "GatewayUserDevice": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "appVersion": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "deviceToken": {
+          "type": "string"
+        },
+        "operatingSystem": {
+          "type": "string"
+        },
+        "providerType": {
+          "type": "string",
+          "enum": [
+            "FIREBASE"
+          ]
+        },
+        "createdOnDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "updatedOnDateTime": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "GatewayRegisterUserDeviceRequest": {
+      "type": "object",
+      "required": [
+        "providerType"
+      ],
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "appVersion": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "deviceToken": {
+          "type": "string"
+        },
+        "operatingSystem": {
+          "type": "string"
+        },
+        "providerType": {
+          "type": "string",
+          "enum": [
+            "FIREBASE"
+          ]
+        }
+      }
+    },
+    "GatewayEntitlementBook": {
+      "type": "object",
+      "properties": {
+        "isbn": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "edition": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expirationDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "courseKeys": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "available": {
+          "type": "boolean"
+        },
+        "vitalAvailable": {
+          "type": "boolean"
+        },
+        "sha256sum": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayEntitlementCourse": {
+      "type": "object",
+      "properties": {
+        "courseKey": {
+          "type": "string"
+        },
+        "coreIsbn": {
+          "type": "string"
+        },
+        "ssoIsbn": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "schedule": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "startDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "endDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expirationDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "paidInFull": {
+          "type": "boolean"
+        },
+        "gatewayCourse": {
+          "type": "boolean"
+        },
+        "instructors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayUser"
+          }
+        },
+        "bookIsbns": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "contexts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "supported": {
+          "type": "boolean"
+        },
+        "blockedFeatures": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "productType": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayGetEntitlementsResponse": {
+      "type": "object",
+      "properties": {
+        "courses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayEntitlementCourse"
+          }
+        },
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayEntitlementBook"
+          }
+        }
+      }
+    },
+    "GatewayChapterToUserFlashcards": {
+      "type": "object",
+      "properties": {
+        "chapterId": {
+          "type": "string"
+        },
+        "flashcards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayUserFlashcard"
+          }
+        }
+      }
+    },
+    "GatewayUserFlashcard": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "frontContent": {
+          "type": "string"
+        },
+        "backContent": {
+          "type": "string"
+        },
+        "image": {
+          "type": "boolean"
+        },
+        "editable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayUserFlashcardsResponse": {
+      "type": "object",
+      "properties": {
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayChapterToUserFlashcards"
+          }
+        }
+      }
+    },
+    "GatewaySearchUserFlashcardsRequest": {
+      "type": "object",
+      "properties": {
+        "chapters": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GatewayCreateUserFlashcardRequest": {
+      "type": "object",
+      "required": [
+        "backContent",
+        "chapterId",
+        "frontContent"
+      ],
+      "properties": {
+        "frontContent": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "backContent": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "image": {
+          "type": "boolean"
+        },
+        "chapterId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      }
+    },
+    "GatewayBookToChapters": {
+      "type": "object",
+      "properties": {
+        "isbn": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayChapter"
+          }
+        }
+      }
+    },
+    "GatewayChapter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "sortKey": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "GatewayChaptersResponse": {
+      "type": "object",
+      "properties": {
+        "isbns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayBookToChapters"
+          }
+        }
+      }
+    },
+    "GatewaySearchChaptersRequest": {
+      "type": "object",
+      "properties": {
+        "isbns": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GatewayBookToChaptersAndFlashcards": {
+      "type": "object",
+      "properties": {
+        "isbn": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayChapterToFlashcards"
+          }
+        }
+      }
+    },
+    "GatewayChapterToFlashcards": {
+      "type": "object",
+      "properties": {
+        "chapterId": {
+          "type": "string"
+        },
+        "flashcards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayFlashcard"
+          }
+        }
+      }
+    },
+    "GatewayFlashcard": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "frontContent": {
+          "type": "string"
+        },
+        "backContent": {
+          "type": "string"
+        },
+        "sortKey": {
+          "type": "string"
+        },
+        "audio": {
+          "$ref": "#/definitions/GatewayFlashcardAudio"
+        }
+      }
+    },
+    "GatewayFlashcardAudio": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "secured": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayFlashcardsResponse": {
+      "type": "object",
+      "properties": {
+        "isbns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayBookToChaptersAndFlashcards"
+          }
+        }
+      }
+    },
+    "GatewaySearchFlashcardsRequest": {
+      "type": "object",
+      "properties": {
+        "isbns": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "chapters": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GatewayUpdateUserFlashcardRequest": {
+      "type": "object",
+      "required": [
+        "backContent",
+        "frontContent"
+      ],
+      "properties": {
+        "frontContent": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "backContent": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "image": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayCourseRecordsResponse": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayUserGradeRecord"
+          }
+        }
+      }
+    },
+    "GatewayUserGradeRecord": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "percentScore": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsEarned": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsPossible": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "GatewayCourseActivity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isManuallyGraded": {
+          "type": "boolean"
+        },
+        "isPractice": {
+          "type": "boolean"
+        },
+        "countsTowardsGrade": {
+          "type": "boolean"
+        },
+        "studentsSubmittedCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "attemptsToGradeCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "classAverage": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsPossible": {
+          "type": "number",
+          "format": "double"
+        },
+        "scoreStrategyDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayCourseCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "activityDropCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "classAverage": {
+          "type": "number",
+          "format": "double"
+        },
+        "weight": {
+          "type": "number",
+          "format": "float"
+        },
+        "activities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayCourseActivity"
+          }
+        },
+        "activitiesCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayCourseRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userGuid": {
+          "type": "string"
+        },
+        "percentScore": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsEarned": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsPossible": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "GatewayCourseReport": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "endDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isMaster": {
+          "type": "boolean"
+        },
+        "courseKey": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "studentCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isbn": {
+          "type": "string"
+        },
+        "isActivityWeightingOn": {
+          "type": "boolean"
+        },
+        "isCategoryWeightingOn": {
+          "type": "boolean"
+        },
+        "isDropLowestOn": {
+          "type": "boolean"
+        },
+        "isLmsSyncSupported": {
+          "type": "boolean"
+        },
+        "performanceRanges": {
+          "$ref": "#/definitions/GatewayPerformanceRanges"
+        },
+        "classAverage": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsAvailableSoFar": {
+          "type": "number",
+          "format": "double"
+        },
+        "totalGradablePoints": {
+          "type": "number",
+          "format": "double"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayCourseCategory"
+          }
+        },
+        "categoriesCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "courseRecords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayCourseRecord"
+          }
+        },
+        "courseRecordsCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayPerformanceRanges": {
+      "type": "object",
+      "properties": {
+        "high": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "medium": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "mediumLow": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "low": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayStudentActivity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "activityId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "attemptCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "attemptAllowed": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dueDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "scoreStrategyDescription": {
+          "type": "string"
+        },
+        "isManuallyGraded": {
+          "type": "boolean"
+        },
+        "isPractice": {
+          "type": "boolean"
+        },
+        "countsTowardsGrade": {
+          "type": "boolean"
+        },
+        "hasAnAttemptInProgress": {
+          "type": "boolean"
+        },
+        "isPendingGrading": {
+          "type": "boolean"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "isDropped": {
+          "type": "boolean"
+        },
+        "isPartialScore": {
+          "type": "boolean"
+        },
+        "hasLatePenalty": {
+          "type": "boolean"
+        },
+        "areGradesViewableByStudent": {
+          "type": "boolean"
+        },
+        "percentScore": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsEarned": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsPossible": {
+          "type": "number",
+          "format": "double"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayStudentActivityComment"
+          }
+        },
+        "commentsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "extensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayStudentActivityExtension"
+          }
+        },
+        "extensionsCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayStudentActivityComment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "activityId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "userGuid": {
+          "type": "string"
+        },
+        "lastModifiedDate": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "GatewayStudentActivityExtension": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "activityId": {
+          "type": "string"
+        },
+        "extendedDueDate": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "GatewayStudentCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "activityDropCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "weight": {
+          "type": "number",
+          "format": "float"
+        },
+        "percentScore": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsEarned": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsPossible": {
+          "type": "number",
+          "format": "double"
+        },
+        "activities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayStudentActivity"
+          }
+        },
+        "activitiesCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayStudentCourseRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "percentScore": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsEarned": {
+          "type": "number",
+          "format": "double"
+        },
+        "pointsPossible": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "GatewayStudentReport": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "guid": {
+          "type": "string"
+        },
+        "isActivityWeightingOn": {
+          "type": "boolean"
+        },
+        "isCategoryWeightingOn": {
+          "type": "boolean"
+        },
+        "isDropLowestOn": {
+          "type": "boolean"
+        },
+        "performanceRanges": {
+          "$ref": "#/definitions/GatewayPerformanceRanges"
+        },
+        "courseRecord": {
+          "$ref": "#/definitions/GatewayStudentCourseRecord"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayStudentCategory"
+          }
+        },
+        "categoriesCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayLicenseAcceptance": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "acceptedDateTime": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "NewLicenseAcceptanceRequest": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        }
+      }
+    },
+    "GetGatewayLicenseAcceptancesResponse": {
+      "type": "object",
+      "properties": {
+        "licenseAcceptances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayLicenseAcceptance"
+          }
+        }
+      }
+    },
+    "GatewayNotification": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "recipientGuid": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "courseKey": {
+          "type": "string"
+        },
+        "read": {
+          "type": "boolean"
+        },
+        "sendDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "activityId": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayNotificationsResponse": {
+      "type": "object",
+      "properties": {
+        "notifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayNotification"
+          }
+        }
+      }
+    },
+    "Choice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ctext": {
+          "type": "string"
+        },
+        "correct": {
+          "type": "boolean"
+        },
+        "numberOfSelectors": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GatewayPoll": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "courseKey": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "endDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "createdOnDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "updatedOnDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "numberOfParticipators": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "mailboxId": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayQuestion"
+          }
+        }
+      }
+    },
+    "GatewayQuestion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "qtext": {
+          "type": "string"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Choice"
+          }
+        }
+      }
+    },
+    "GetGatewayPollsResponse": {
+      "type": "object",
+      "properties": {
+        "polls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayPoll"
+          }
+        }
+      }
+    },
+    "GatewayPollOutcome": {
+      "type": "object",
+      "properties": {
+        "poll": {
+          "$ref": "#/definitions/GatewayPoll"
+        },
+        "rosterResult": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayUserPollOutcome"
+          }
+        }
+      }
+    },
+    "GatewayStudentAnswers": {
+      "type": "object",
+      "properties": {
+        "userChoiceStatus": {
+          "type": "string",
+          "enum": [
+            "NOT_SELECTED",
+            "SELECTED"
+          ]
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "correct": {
+          "type": "boolean"
+        },
+        "ctext": {
+          "type": "string"
+        }
+      }
+    },
+    "GatewayStudentQuestion": {
+      "type": "object",
+      "properties": {
+        "questionId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userQuestionStatus": {
+          "type": "string",
+          "enum": [
+            "UNANSWERED",
+            "WRONG",
+            "CORRECT",
+            "ANSWERED"
+          ]
+        },
+        "studentAnswers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayStudentAnswers"
+          }
+        }
+      }
+    },
+    "GatewayUserPollOutcome": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/GatewayUser"
+        },
+        "studentQuestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayStudentQuestion"
+          }
+        },
+        "userEventStatus": {
+          "type": "string",
+          "enum": [
+            "NOT_STARTED",
+            "SUBMITTED"
+          ]
+        }
+      }
+    },
+    "GatewayTemplate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "createdOnDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "updatedOnDateTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayQuestion"
+          }
+        }
+      }
+    },
+    "CreateChoiceRequest": {
+      "type": "object",
+      "properties": {
+        "ctext": {
+          "type": "string"
+        },
+        "correct": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayCreateQuestionRequest": {
+      "type": "object",
+      "properties": {
+        "qtext": {
+          "type": "string"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateChoiceRequest"
+          }
+        }
+      }
+    },
+    "GatewayCreateTemplateRequest": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayCreateQuestionRequest"
+          }
+        }
+      }
+    },
+    "GetGatewayTemplatesResponse": {
+      "type": "object",
+      "properties": {
+        "templates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayTemplate"
+          }
+        }
+      }
+    },
+    "GetGatewayPollOutcomesResponse": {
+      "type": "object",
+      "properties": {
+        "getawayPollOutcomes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayPollOutcome"
+          }
+        }
+      }
+    },
+    "GatewayCreatePollRequest": {
+      "type": "object",
+      "properties": {
+        "durationInMillis": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "saveAsTemplate": {
+          "type": "boolean"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GatewayCreateQuestionRequest"
+          }
+        }
+      }
+    },
+    "GatewaySubmitPollRequest": {
+      "type": "object",
+      "properties": {
+        "studentAnswersForQuestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudentAnswersForQuestion"
+          }
+        }
+      }
+    },
+    "StudentAnswersForQuestion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "selectedChoices": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "GatewayPreferences": {
+      "type": "object",
+      "properties": {
+        "instructorCommunications": {
+          "type": "boolean"
+        },
+        "datesAndReminders": {
+          "type": "boolean"
+        },
+        "grades": {
+          "type": "boolean"
+        },
+        "mindTapAlerts": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GatewayStorePreferencesRequest": {
+      "type": "object",
+      "required": [
+        "preferences"
+      ],
+      "properties": {
+        "preferences": {
+          "$ref": "#/definitions/GatewayPreferences"
+        }
+      }
+    }
+  }
+}

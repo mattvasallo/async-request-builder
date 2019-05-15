@@ -1,0 +1,176 @@
+{
+  "activities": {
+    "getActivity": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/activities/:courseKey/:activityId"
+      }
+    },
+    "getActivities": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/activities/:courseKey"
+      }
+    },
+    "getLearningPath": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/activities/:courseKey/learningPath"
+      }
+    },
+    "getActivityLaunchData": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/activities/launchData/:courseKey/:activityId"
+      }
+    }
+  },
+  "attendance": {
+    "createAttendance": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "post",
+        "url": "/courses/:courseKey/instructor/attendances/attendance"
+      }
+    },
+    "getAttendanceResult": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/instructor/attendances/:attendanceId"
+      }
+    },
+    "deleteAttendance": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "delete",
+        "url": "/courses/:courseKey/instructor/attendances/:attendanceId"
+      }
+    },
+    "getStudentAttendanceResult": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/student/attendances"
+      }
+    },
+    "bulkUpdateStudentForAttendances": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "post",
+        "url": "/courses/:courseKey/instructor/attendances/students/:studentGuid/bulk"
+      }
+    },
+    "getCourseAttendancesReport": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/instructor/attendances"
+      }
+    },
+    "getStudentAttendanceForInstructorResult": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/instructor/attendances/students/:studentGuid"
+      }
+    },
+    "checkIn": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "post",
+        "url": "/courses/:courseKey/student/attendances/:attendanceId/mark/present"
+      }
+    },
+    "bulkUpdateAttendanceForStudents": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "post",
+        "url": "/courses/:courseKey/instructor/attendances/:attendanceId/bulk"
+      }
+    },
+    "endAttendance": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "post",
+        "url": "/courses/:courseKey/instructor/attendances/:attendanceId/end"
+      }
+    },
+    "getCourseSummary": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/instructor/summary"
+      }
+    }
+  },
+  "poll": {
+    "getPoll": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/polls/:pollId"
+      }
+    },
+    "deletePoll": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "delete",
+        "url": "/courses/:courseKey/polls/:pollId"
+      }
+    },
+    "getPolls": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/polls"
+      }
+    },
+    "createPoll": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "post",
+        "url": "/courses/:courseKey/polls"
+      }
+    },
+    "getPollOutcomeForStudent": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/polls/:pollId/outcomes/student"
+      }
+    },
+    "endPoll": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "post",
+        "url": "/courses/:courseKey/polls/:pollId/end"
+      }
+    },
+    "getPollOutcomeInstructor": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/polls/:pollId/outcomes/instructor"
+      }
+    },
+    "getPollsOutcomesForCourse": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "get",
+        "url": "/courses/:courseKey/polls/outcome"
+      }
+    },
+    "userSubmitPoll": {
+      "asyncModule": "http",
+      "operationDetails": {
+        "method": "post",
+        "url": "/courses/:courseKey/polls/:pollId/submit"
+      }
+    }
+  }
+}

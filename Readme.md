@@ -60,7 +60,8 @@ Coming soon....
 - Support for build time output
 
 ### Todos
+- Support http file download response (Content-Disposition)
+- Support all http response data types
 - Add mysql, aggregation, & fs
 - async-modules format validation
-- caching async responses
 - Add typescript
